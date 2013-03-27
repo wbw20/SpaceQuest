@@ -13,9 +13,10 @@ public class Navigation : MonoBehaviour {
 	public float x_rate;
 	public float y_rate;
 	public float z_rate;
+	public float time_rate;
 	// Use this for initialization
 	void Start () {
-		 InvokeRepeating("Travel", 1, 1);
+		 InvokeRepeating("Travel", 1, time_rate);
 	}
 	
 	// Update is called once per frame
