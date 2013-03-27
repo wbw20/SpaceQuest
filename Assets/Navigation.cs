@@ -1,18 +1,38 @@
+//This function will take a series of three coordinates and once every second the object will move closer
+//to the input point by 1 in each direction
+
 using UnityEngine;
 using System.Collections;
 
 public class Navigation : MonoBehaviour {
 	
-	public int x_goal;
-	public int y_goal;
-	public int z_goal;
+	public float x_goal;
+	public float y_goal;
+	public float z_goal;
 	// Use this for initialization
 	void Start () {
-	
+		 InvokeRepeating("Travel", 1, 1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	void Travel (){
+		float new_x = this.transform.position.x;
+		float new_y = this.transform.position.y;
+		float new_z = this.transform.position.z;
+
+		if(transform.position.x > x_goal){ new_x--;}
+		else if(transform.position.x < x_goal){new_x++;}
+		
+		if(transform.position.y > y_goal){ new_y--;}
+		else if(transform.position.y < y_goal){new_y++;}
+		
+		if(transform.position.z > z_goal){ new_z--;}
+		else if(transform.position.z < z_goal){new_z++;}
+		
+		transform.position = new Vector3(new_x, new_y, new_z);
 	}
 }
