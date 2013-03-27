@@ -9,6 +9,10 @@ public class Navigation : MonoBehaviour {
 	public float x_goal;
 	public float y_goal;
 	public float z_goal;
+	
+	public float x_rate;
+	public float y_rate;
+	public float z_rate;
 	// Use this for initialization
 	void Start () {
 		 InvokeRepeating("Travel", 1, 1);
@@ -24,14 +28,26 @@ public class Navigation : MonoBehaviour {
 		float new_y = this.transform.position.y;
 		float new_z = this.transform.position.z;
 
-		if(transform.position.x > x_goal){ new_x--;}
-		else if(transform.position.x < x_goal){new_x++;}
+		if(transform.position.x > x_goal){ 
+			new_x= new_x - x_rate;
+		}
+		else if(transform.position.x < x_goal){
+			new_x = new_x + x_rate;
+		}
 		
-		if(transform.position.y > y_goal){ new_y--;}
-		else if(transform.position.y < y_goal){new_y++;}
+		if(transform.position.y > y_goal){ 
+			new_y= new_y - y_rate;
+		}
+		else if(transform.position.y < y_goal){
+			new_y = new_y + y_rate;
+		}
 		
-		if(transform.position.z > z_goal){ new_z--;}
-		else if(transform.position.z < z_goal){new_z++;}
+		if(transform.position.z > z_goal){ 
+			new_z = new_z - z_rate;
+		}
+		else if(transform.position.z < z_goal){
+			new_z = new_z + z_rate;
+		}
 		
 		transform.position = new Vector3(new_x, new_y, new_z);
 	}
