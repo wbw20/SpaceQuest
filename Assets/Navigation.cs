@@ -14,6 +14,7 @@ public class Navigation : MonoBehaviour {
 	public float y_rate;
 	public float z_rate;
 	public float time_rate;
+	public int encounter_switch;
 	
 	// Use this for initialization
 	void Start () {
@@ -54,9 +55,13 @@ public class Navigation : MonoBehaviour {
 		
 		transform.position = new Vector3(new_x, new_y, new_z);//update the position
 		
+		if(encounter_switch == 1){ 
+		
 		float encounter = Random.value;//generate random number
 		if(encounter <= 0.5){
 			transform.position = new Vector3(0, 0, 0);
+		}
+			
 		}
 	}
 }
