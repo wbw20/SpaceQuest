@@ -37,12 +37,13 @@ namespace AssemblyCSharp {
 	        }
 			GUI.skin.font = spaceQuestFont;
 			GUI.Label (new Rect (10, 10, 100, 50), "Space Quest");
-			
-			int spacing = 20;
-			foreach (Planet planet in planets) {
-				GUI.Label (new Rect (10, spacing, 100, 50), planet.getName());
-				
-				spacing+= 15;
+			if (GUI.Button(new Rect(10, 35, 100, 50), "Fly To")) {
+            	int spacing = 50;
+				foreach (Planet planet in planets) {
+					GUI.Label (new Rect (10, spacing, 100, 50), planet.getName());
+					
+					spacing+= 15;
+				}
 			}
 		}
 		
