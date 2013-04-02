@@ -3,17 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 
 namespace AssemblyCSharp {
+
+	
 	public class GameMaster : MonoBehaviour {
+		public static int MAP_DIAMETER = 1000;
+		
 		private Rect windowRect = new Rect (Screen.width - 300, Screen.height - 600, Screen.width - 200, Screen.height - 150);
 		List<Planet> planets;
+		
+		private Planet currentLocation;
 		
 		public Font spaceQuestFont;
 		
 	
 		// Use this for initialization
 		void Start () {
-			planets = new List<Planet>();
-			planets.Add(new Planet("Jupiter"));
+			planets = generatePlanets();
 		}
 		
 		// Update is called once per frame
@@ -33,9 +38,26 @@ namespace AssemblyCSharp {
 			GUI.skin.font = spaceQuestFont;
 			GUI.Label (new Rect (10, 10, 100, 50), "Space Quest");
 			
+			int spacing = 20;
 			foreach (Planet planet in planets) {
-				GUI.Label (new Rect (10, 30, 100, 50), planet.getName());
+				GUI.Label (new Rect (10, spacing, 100, 50), planet.getName());
+				
+				spacing+= 15;
 			}
+		}
+		
+		static List<Planet> generatePlanets() {
+			List<Planet> generated = new List<Planet>();
+			
+			for (int i = MAP_DIAMETER; i <= MAP_DIAMETER*10; i += MAP_DIAMETER) {
+				Planet random = new Planet(Planet.names[Random.Range(0, Planet.names.Length)]);
+				random.setLocation(new Vector3(Random.Range(i, i + MAP_DIAMETER),
+											  Random.Range(0, MAP_DIAMETER),
+											  Random.Range(0, MAP_DIAMETER)));
+				generated.Add(random);
+			}
+			
+			return generated;
 		}
 	}
 }
