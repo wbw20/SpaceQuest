@@ -13,7 +13,7 @@ public class Navigation : MonoBehaviour {
 	public float x_rate;
 	public float y_rate;
 	public float z_rate;
-	public float time_rate;
+	public int time_rate;
 	public int encounter_switch;
 	
 	// Use this for initialization
