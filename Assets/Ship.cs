@@ -14,6 +14,10 @@ public class Ship : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		item[0] = new item("Lightsabers",500);
+		item[1] = new item("Blasters",1000);
+		item[2] = new item("Dippin Dots", 500);
+		
 	}
 	
 	// Update is called once per frame
