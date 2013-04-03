@@ -71,7 +71,7 @@ public class Navigation : MonoBehaviour {
 	void OnGUI(){
 		if(waylayed == true){
 			message = "You have been waylayed!";
-			message = GUI.TextField (new Rect (10, 10, 200, 20), message, 25);
+			message = GUI.TextField (new Rect (.5f*Screen.width - 40, .5f*Screen.height -30 , 200, 20), message, 25);
 			Time.timeScale = 0;
 			if(GUI.Button (new Rect(.5f*Screen.width - 30, .5f*Screen.height, 60f, 20f), "Resume?")){
 				waylayed = false;
