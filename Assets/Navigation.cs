@@ -16,6 +16,7 @@ public class Navigation : MonoBehaviour {
 	public int time_rate;
 	public bool encounter_switch;
 	private bool waylayed; 
+	private string message;
 	
 	// Use this for initialization
 	void Start () {
@@ -69,8 +70,10 @@ public class Navigation : MonoBehaviour {
 	
 	void OnGUI(){
 		if(waylayed == true){
+			message = "You have been waylayed!";
+			message = GUI.TextField (new Rect (10, 10, 200, 20), message, 25);
 			Time.timeScale = 0;
-			if(GUI.Button (new Rect(.5f*Screen.width - 30, .5f*Screen.height, 60f, 20f), " You have been waylayed. \n Resume?")){
+			if(GUI.Button (new Rect(.5f*Screen.width - 30, .5f*Screen.height, 60f, 20f), "Resume?")){
 				waylayed = false;
 				Time.timeScale = 1;
 			}
