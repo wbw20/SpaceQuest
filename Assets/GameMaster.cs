@@ -38,12 +38,17 @@ namespace AssemblyCSharp {
 			GUI.skin.font = spaceQuestFont;
 			GUI.Label (new Rect (10, 10, 100, 50), "Space Quest");
 			if (GUI.Button(new Rect(10, 35, 100, 50), "Fly To")) {
-            	int spacing = 50;
-				foreach (Planet planet in planets) {
-					GUI.Label (new Rect (10, spacing, 100, 50), planet.getName());
-					
-					spacing+= 15;
-				}
+				GameObject planet_button = (GameObject)Instantiate(Resources.Load("mini_planet"), transform.position, transform.rotation);
+				planet_button.AddComponent("MeshFilter");
+				planet_button.AddComponent("MeshRenderer");
+				((MeshRenderer)planet_button.GetComponent("MeshRenderer")).renderer.material.mainTexture = (Texture)Resources.Load("mars");
+			}
+			
+		    int spacing = 50;
+			foreach (Planet planet in planets) {
+				GUI.Label (new Rect (10, spacing, 100, 50), planet.getName());
+				
+				spacing+= 15;
 			}
 		}
 		
