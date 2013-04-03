@@ -2,6 +2,9 @@ using UnityEngine;
 using System.Collections;
 
 public class SpaceShip : MonoBehaviour {
+	public int health;
+	public int weapons;
+	public int cargo;
 
 	// Use this for initialization
 	void Start () {

@@ -14,7 +14,8 @@ public class Navigation : MonoBehaviour {
 	public float y_rate;
 	public float z_rate;
 	public int time_rate;
-	public int encounter_switch;
+	public bool encounter_switch;
+	private bool waylayed; 
 	
 	// Use this for initialization
 	void Start () {
@@ -55,13 +56,24 @@ public class Navigation : MonoBehaviour {
 		
 		transform.position = new Vector3(new_x, new_y, new_z);//update the position
 		
-		if(encounter_switch == 1){ 
+		if(encounter_switch == true){ 
 		
-		float encounter = Random.value;//generate random number
-		if(encounter <= 0.5){
-			transform.position = new Vector3(0, 0, 0);
-		}
+			float encounter = Random.value;//generate random number
+			if(encounter <= 0.5){
+				waylayed = true;
+				transform.position = new Vector3(0, 0, 0);
+			}
 			
+		}
+	}
+	
+	void OnGUI(){
+		if(waylayed == true){
+			Time.timeScale = 0;
+			if(GUI.Button (new Rect(.5f*Screen.width - 30, .5f*Screen.height, 60f, 20f), " You have been waylayed. \n Resume?")){
+				waylayed = false;
+				Time.timeScale = 1;
+			}
 		}
 	}
 }
